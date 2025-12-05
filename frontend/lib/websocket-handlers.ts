@@ -260,6 +260,29 @@ export function handleWebSocketMessage(
           event_type: "planner_complete",
         },
       ]);
+      ]);
+      return;
+    }
+
+    // Handle designer complete (with formatted design system)
+    if (data.e === "designer_complete") {
+      const designContent = data.content || data.design_system;
+      const formatted = data.formatted as string | undefined;
+      
+      handlers.setMessages((prev) => [
+        ...prev,
+        {
+          id: Date.now().toString() + "-design",
+          role: "assistant" as const,
+          content:
+            typeof designContent === "object"
+              ? JSON.stringify(designContent, null, 2)
+              : String(designContent),
+          formatted: formatted,
+          created_at: new Date().toISOString(),
+          event_type: "designer_complete",
+        },
+      ]);
       return;
     }
   } catch (err) {

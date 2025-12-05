@@ -245,6 +245,7 @@ async def builder_node(state: GraphState) -> GraphState:
             )
 
         plan = state.get("plan", {})
+        design_system = state.get("design_system", {})
         if plan:
             print("INFO: Plan Recieved")
 
@@ -300,6 +301,9 @@ async def builder_node(state: GraphState) -> GraphState:
             IMPLEMENTATION PLAN FROM PLANNER:
 
             {json.dumps(plan, indent=2)}
+            
+            DESIGN SYSTEM (AESTHETICS & GUIDELINES):
+            {json.dumps(design_system, indent=2)}
             
             YOUR MISSION:
 

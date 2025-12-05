@@ -5,6 +5,9 @@ from pydantic import BaseModel
 import asyncio
 import json
 import os
+from dotenv import load_dotenv
+load_dotenv()
+
 import io
 import zipfile
 from fastapi import Depends

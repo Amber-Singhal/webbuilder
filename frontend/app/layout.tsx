@@ -29,8 +29,8 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000",
   ),
-  title: "WEB BUILDER AI",
-  description: "Build React applications with AI",
+  title: "Evi - AI Smart Contract Builder",
+  description: "From Idea to Verified Smart Contract in One Chat",
   icons: {
     icon: "/logo2.png",
   },

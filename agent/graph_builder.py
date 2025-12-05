@@ -6,8 +6,14 @@ from .graph_nodes import (
     code_validator_node,
     application_checker_node,
     should_retry_builder_for_validation,
+    planner_node,
+    builder_node,
+    code_validator_node,
+    application_checker_node,
+    should_retry_builder_for_validation,
     should_retry_builder_or_finish,
 )
+from .designer_node import designer_node
 from typing import Dict, Any
 
 
@@ -19,6 +25,7 @@ def create_langgraph_workflow():
 
     # Add nodes
     workflow.add_node("planner", planner_node)
+    workflow.add_node("designer", designer_node)
     workflow.add_node("builder", builder_node)
     workflow.add_node("code_validator", code_validator_node)
     workflow.add_node("application_checker", application_checker_node)
@@ -27,7 +34,8 @@ def create_langgraph_workflow():
     workflow.set_entry_point("planner")
 
     # Add edges with retry logic
-    workflow.add_edge("planner", "builder")
+    workflow.add_edge("planner", "designer")
+    workflow.add_edge("designer", "builder")
     workflow.add_edge("builder", "code_validator")
 
     # Code validator can retry builder or continue to app checker

@@ -12,6 +12,7 @@ class GraphState(TypedDict):
 
     # Planning phase
     plan: Optional[Dict[str, Any]]
+    design_system: Optional[Dict[str, Any]]
 
     # Building phase
     files_created: List[str]
