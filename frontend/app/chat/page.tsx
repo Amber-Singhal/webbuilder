@@ -79,13 +79,21 @@ export default function ChatPage() {
     }
   };
 
+  const handleStartChat = () => {
+    // Focus input or scroll to input
+    const inputElement = document.querySelector('input[type="text"]') as HTMLInputElement;
+    if (inputElement) {
+      inputElement.focus();
+    }
+  };
+
   return (
     <div className="min-h-screen w-full relative bg-black">
       <div
         className="absolute inset-0 z-0"
         style={{
           background:
-            "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(226, 232, 240, 0.15), transparent 70%), #000000",
+            "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255, 77, 0, 0.15), transparent 70%), #000000",
         }}
       />
 
@@ -96,40 +104,49 @@ export default function ChatPage() {
       />
 
       <div className="relative z-10 min-h-[calc(100vh-60px)] flex flex-col items-center justify-center px-4">
-        <StatusBadge />
-
-        <div className="mb-12">
-          <h1 className="text-5xl font-semibold text-white text-center tracking-tight">
-            WEB BUILDER AI
+        <div className="flex-1 flex flex-col items-center justify-center p-4 text-center w-full max-w-4xl">
+          <h1 className="text-4xl md:text-6xl font-serif text-white mb-8 italic" style={{ fontFamily: 'var(--font-playfair)' }}>
+            GM GM! What you wanna ship on chain
           </h1>
-        </div>
 
-        <div className="w-full max-w-2xl">
-          <ChatInputBox
-            input={input}
-            isLoading={isLoading}
-            onInputChange={setInput}
-            onSubmit={handleSubmit}
-          />
-
-          {error && (
-            <div className="mt-4 p-3 bg-red-500/10 border border-red-500/30 rounded-lg text-red-400 text-sm text-center">
-              {error}
+          <div className="w-full max-w-2xl mx-auto">
+            <div className="bg-[#111] border border-white/10 rounded-xl p-4 mb-6 text-left h-32 flex items-start cursor-text hover:border-white/20 transition" onClick={handleStartChat}>
+              <span className="text-neutral-500">Ask zap a question...</span>
             </div>
-          )}
 
-          <div className="mt-6 text-center">
-            <p className="text-sm text-white/50">
-              Get access to the best AI Agent. +30M users choose WEB BUILDER.
-              <a href="#" className="text-blue-400 hover:text-blue-300 ml-2">
-                Upgrade plan
-              </a>
-            </p>
+            <div className="flex flex-wrap justify-center gap-3 mb-12">
+              {['Clone UI', 'Import Figma', 'Create Page', 'Improve'].map((action) => (
+                <button key={action} onClick={() => setInput(action)} className="px-4 py-2 bg-[#111] border border-white/10 hover:border-[#FF4D00]/50 text-neutral-400 hover:text-white rounded-lg text-sm transition flex items-center gap-2">
+                  {action}
+                </button>
+              ))}
+            </div>
+
+            <ChatInputBox
+              input={input}
+              isLoading={isLoading}
+              onInputChange={setInput}
+              onSubmit={handleSubmit}
+            />
+
+            {error && (
+              <div className="mt-4 p-3 bg-red-500/10 border border-red-500/30 rounded-lg text-red-400 text-sm text-center">
+                {error}
+              </div>
+            )}
           </div>
         </div>
 
-        <PromotionBanner />
+        <div className="mt-6 text-center pb-8">
+          <p className="text-sm text-white/50">
+            Get access to the best AI Agent. +30M users choose Evi.
+            <a href="#" className="text-[#FF4D00] hover:text-[#ff6a2b] ml-2">
+              Upgrade plan
+            </a>
+          </p>
+        </div>
       </div>
+      <PromotionBanner />
     </div>
   );
 }

@@ -16,19 +16,18 @@ import "./page-styles.css";
 export default function Home() {
   return (
     <div
-      className="min-h-screen w-full relative overflow-hidden"
-      style={{ backgroundColor: "#0a0a0a" }}
+      className="min-h-screen w-full relative overflow-hidden bg-[#050505]"
     >
       {/* Top Spotlight Background - Only at the top */}
       <div
         className="absolute w-full top-0 left-0 right-0 z-0 pointer-events-none"
         style={{
-          height: "700px",
+          height: "800px",
           background: `
             radial-gradient(
-              ellipse 90% 60% at 50% 0%,
-              rgba(115, 115, 115, 0.25) 0%,
-              rgba(64, 64, 64, 0.15) 40%,
+              ellipse 80% 50% at 50% -10%,
+              rgba(255, 77, 0, 0.15) 0%,
+              rgba(255, 77, 0, 0.05) 40%,
               rgba(0, 0, 0, 0) 80%
             )
           `,
@@ -45,466 +44,159 @@ export default function Home() {
         }}
       >
         {/* Navigation Header */}
+        <nav className="flex items-center justify-between px-6 py-6 max-w-7xl mx-auto w-full">
+          <div className="flex items-center gap-2">
+            <span className="text-2xl font-serif text-white font-bold" style={{ fontFamily: 'var(--font-playfair)' }}>Evi.</span>
+          </div>
+          <Link href="/chat">
+            <button className="px-6 py-2 bg-[#FF4D00] text-white rounded-full hover:bg-[#ff6a2b] transition font-medium text-sm">
+              Sign Up
+            </button>
+          </Link>
+        </nav>
 
-        <section className="py-20 px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <span className="text-neutral-400">Your</span>
-              <div className="flex items-center gap-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 px-3 py-2 rounded-lg border border-blue-500/30">
-                <IoSparkles size={18} className="text-blue-400" />
-                <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                  AI
-                </span>
-              </div>
-              <span className="text-neutral-400">web app builder</span>
-            </div>
+        <section className="py-20 px-6 relative">
+          {/* Hero Background Glow */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-[#FF4D00] opacity-10 blur-[120px] rounded-full pointer-events-none z-0" />
 
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight text-balance">
-              Build React Applications with AI
+          <div className="max-w-5xl mx-auto text-center relative z-10">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight text-balance text-white font-serif" style={{ fontFamily: 'var(--font-playfair)' }}>
+              From Idea to Verified<br />
+              Smart Contract in One Chat
             </h1>
 
-            <p className="text-xl text-neutral-400 mb-8 max-w-2xl mx-auto text-balance">
-              Transform your ideas into production-ready React applications.
-              Just describe what you want to build, and our AI agent handles the
-              rest.
+            <p className="text-xl text-neutral-400 mb-12 max-w-2xl mx-auto text-balance">
+              Don't code just chat the chain
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
               <Link href="/chat">
-                <button className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full hover:from-blue-500 hover:to-purple-500 transition font-semibold flex items-center gap-2 group">
-                  START BUILDING FOR FREE
+                <button className="px-8 py-4 bg-[#FF4D00] text-white rounded-full hover:bg-[#ff6a2b] transition font-semibold flex items-center gap-2 group text-lg shadow-[0_0_20px_rgba(255,77,0,0.3)]">
+                  Start Building
                   <ArrowUpRight
-                    size={18}
+                    size={20}
                     className="group-hover:translate-x-1 group-hover:-translate-y-1 transition"
                   />
                 </button>
               </Link>
             </div>
 
-            {/* Avatar Stack */}
-            <div className="flex items-center justify-center gap-3">
-              <div className="flex -space-x-3">
-                {[0, 1, 2, 3].map((i) => (
-                  <div
-                    key={i}
-                    className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-purple-600 border-2 border-black flex items-center justify-center text-sm font-semibold"
-                  >
-                    <FaReact className="text-white" />
-                  </div>
+            {/* How It Works Cards */}
+            <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+              {/* Card 1: Describe */}
+              <div className="bg-white rounded-2xl p-8 text-left h-[400px] flex flex-col justify-end relative overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
+                <div className="absolute top-6 left-6 flex gap-2">
+                  <div className="w-2 h-2 rounded-full bg-neutral-200" />
+                  <div className="w-2 h-2 rounded-full bg-neutral-200" />
+                </div>
+                <h3 className="text-3xl font-bold text-black mb-2 leading-tight">
+                  Describe<br />your intent
+                </h3>
+                <p className="text-neutral-500 text-sm">
+                  Create a DAO for community voting
+                </p>
+              </div>
+
+              {/* Card 2: Generate (Red) */}
+              <div className="bg-gradient-to-b from-[#FF4D00] to-[#cc3d00] rounded-2xl p-8 text-left h-[400px] flex flex-col justify-end relative overflow-hidden group hover:-translate-y-2 transition-transform duration-300 shadow-[0_10px_30px_rgba(255,77,0,0.3)]">
+                <div className="absolute top-6 left-6 flex gap-2">
+                  <div className="w-2 h-2 rounded-full bg-white/20" />
+                  <div className="w-2 h-2 rounded-full bg-white/20" />
+                </div>
+                <h3 className="text-3xl font-bold text-white mb-2 leading-tight">
+                  EVI<br />generates<br />Solidity code
+                </h3>
+                <p className="text-white/80 text-sm">
+                  AI writes, fixes, and optimizes smart contracts.
+                </p>
+              </div>
+
+              {/* Card 3: Deploy (Black) */}
+              <div className="bg-[#111] border border-white/10 rounded-2xl p-8 text-left h-[400px] flex flex-col justify-end relative overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
+                <div className="absolute top-6 left-6 flex gap-2">
+                  <div className="w-2 h-2 rounded-full bg-white/20" />
+                  <div className="w-2 h-2 rounded-full bg-white/20" />
+                </div>
+                <h3 className="text-3xl font-bold text-white mb-2 leading-tight">
+                  EVI<br />deploys it<br />live
+                </h3>
+                <p className="text-neutral-400 text-sm">
+                  On networks like Basecamp, Avalanche, or Boba.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Featured Chat Section */}
+        <section className="py-24 px-6 border-t border-white/5 bg-black/50">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-6xl md:text-8xl font-serif italic text-white mb-16 opacity-90" style={{ fontFamily: 'var(--font-playfair)' }}>
+              Featured chat
+            </h2>
+
+            <div className="bg-[#0A0A0A] border border-white/10 rounded-3xl p-8 md:p-12 max-w-3xl mx-auto relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#FF4D00] to-transparent opacity-50" />
+
+              <p className="text-white text-lg mb-8 font-medium">GM GM! What you wanna ship on chain</p>
+
+              <div className="bg-[#111] border border-white/10 rounded-xl p-4 mb-6 text-left h-32 flex items-start">
+                <span className="text-neutral-500">Ask zap a question...</span>
+              </div>
+
+              <div className="flex items-center justify-between">
+                <div className="flex gap-2">
+                  <button className="w-10 h-10 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center text-white/60 transition">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48" /></svg>
+                  </button>
+                  <button className="w-10 h-10 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center text-white/60 transition">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" /></svg>
+                  </button>
+                </div>
+                <button className="px-6 py-2 bg-white/10 hover:bg-white/20 text-white rounded-lg transition flex items-center gap-2 text-sm font-medium">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="22" y1="2" x2="11" y2="13" /><polygon points="22 2 15 22 11 13 2 9 22 2" /></svg>
+                  Send
+                </button>
+              </div>
+
+              <div className="flex flex-wrap justify-center gap-3 mt-8">
+                {['Clone UI', 'Import Figma', 'Create Page', 'Improve'].map((action) => (
+                  <button key={action} className="px-4 py-2 bg-[#111] border border-white/10 hover:border-[#FF4D00]/50 text-neutral-400 hover:text-white rounded-lg text-sm transition flex items-center gap-2">
+                    {action === 'Clone UI' && <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2" /><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" /></svg>}
+                    {action === 'Import Figma' && <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z" /><path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z" /><path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0z" /><path d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0z" /><path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z" /></svg>}
+                    {action === 'Create Page' && <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2" /><line x1="8" y1="21" x2="16" y2="21" /><line x1="12" y1="17" x2="12" y2="21" /></svg>}
+                    {action === 'Improve' && <IoSparkles size={14} />}
+                    {action}
+                  </button>
                 ))}
               </div>
-              <span className="text-neutral-400">
-                Join thousands of developers
-              </span>
             </div>
-
-            {/* Demo Screenshot */}
-            <div className="mt-16 rounded-xl border border-neutral-800 bg-neutral-900/50 overflow-hidden">
-              <img
-                src="/code.png"
-                alt="WEB BUILDER AI Interface Demo"
-                className="w-full"
-              />
-            </div>
-          </div>
-        </section>
-
-        {/* Companies Section */}
-        <section className="py-16 px-6 border-t border-neutral-800">
-          <div className="max-w-6xl mx-auto">
-            <p className="text-center text-neutral-500 mb-12">
-              Powered by cutting-edge AI technology
-            </p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
-              {["React", "Tailwind CSS", "Vite", "AI Agents"].map((tech) => (
-                <div key={tech} className="text-center">
-                  <p className="text-neutral-400 font-medium">{tech}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Feature Icons Section */}
-        <section className="py-20 px-6 border-t border-neutral-800">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
-              <div className="flex flex-col items-start">
-                <MdAutoAwesome size={32} className="mb-4 text-neutral-400" />
-                <h3 className="text-lg font-semibold mb-2">
-                  AI-Powered Development
-                </h3>
-                <p className="text-neutral-500">
-                  Let AI write your code, set up routing, and configure your
-                  entire React application
-                </p>
-              </div>
-              <div className="flex flex-col items-start">
-                <MdSpeed size={32} className="mb-4 text-neutral-400" />
-                <h3 className="text-lg font-semibold mb-2">Lightning Fast</h3>
-                <p className="text-neutral-500">
-                  Go from idea to deployed application in minutes, not days or
-                  weeks
-                </p>
-              </div>
-              <div className="flex flex-col items-start">
-                <FaBolt size={32} className="mb-4 text-neutral-400" />
-                <h3 className="text-lg font-semibold mb-2">
-                  Real-time Preview
-                </h3>
-                <p className="text-neutral-500">
-                  See your application come to life in real-time as the AI
-                  builds it
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* How It Works Section */}
-        <section className="py-20 px-6 border-t border-neutral-800">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-5xl md:text-6xl font-bold mb-4 text-balance">
-                Build smarter.
-              </h2>
-              <p className="text-4xl md:text-5xl font-bold text-neutral-600 mb-6 text-balance">
-                Code faster.
-              </p>
-              <p className="text-xl text-neutral-400 text-balance">
-                Our AI agent understands your requirements and builds complete
-                React applications with proper architecture.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-8">
-              {/* Describe Card */}
-              <div className="border border-neutral-800 rounded-2xl p-8 bg-neutral-900/30 hover:bg-neutral-900/50 transition">
-                <h3 className="text-2xl font-semibold mb-3">
-                  Describe your app
-                </h3>
-                <p className="text-neutral-400 mb-8">
-                  Tell the AI what you want to build in natural language - no
-                  technical jargon required.
-                </p>
-                <div className="bg-black rounded-lg p-6 mb-6 h-40 border border-neutral-700 flex items-center justify-center">
-                  <div className="text-center text-neutral-600">
-                    <FaCode size={24} className="mx-auto mb-2 opacity-30" />
-                    <p className="text-sm">
-                      "Build a todo app with drag-and-drop"
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2 text-neutral-500 text-sm">
-                  <IoSparkles size={16} />
-                  <span>AI understands your intent</span>
-                </div>
-              </div>
-
-              {/* Watch Card */}
-              <div className="border border-neutral-800 rounded-2xl p-8 bg-neutral-900/30 hover:bg-neutral-900/50 transition">
-                <h3 className="text-2xl font-semibold mb-3">Watch it build</h3>
-                <p className="text-neutral-400 mb-8">
-                  See your application being created in real-time with live
-                  preview.
-                </p>
-                <div className="bg-black rounded-lg p-6 mb-6 border border-neutral-700">
-                  <div className="space-y-3">
-                    <div className="bg-neutral-900 rounded px-3 py-2 flex items-center justify-between">
-                      <span className="text-neutral-400 flex items-center gap-2">
-                        <FaCheckCircle size={16} className="text-green-500" />
-                        Creating components
-                      </span>
-                      <ChevronRight size={16} />
-                    </div>
-                    <div className="text-xs text-neutral-600 px-3">
-                      Building your app
-                    </div>
-                    <div className="space-y-2 ml-1">
-                      {[
-                        "App.jsx",
-                        "TodoList.jsx",
-                        "TodoItem.jsx",
-                        "styles.css",
-                      ].map((file, i) => (
-                        <div
-                          key={file}
-                          className="text-neutral-500 text-sm flex items-center gap-2"
-                        >
-                          <div className="w-4 h-4 rounded-full bg-green-500 flex items-center justify-center">
-                            <FaCheckCircle size={10} className="text-white" />
-                          </div>
-                          {file}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Features Section */}
-        <section className="py-20 px-6 border-t border-neutral-800">
-          <div className="max-w-4xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-8 mb-16">
-              {/* AI-Powered Section */}
-              <div className="border border-neutral-800 rounded-2xl p-8 bg-neutral-900/30 hover:bg-neutral-900/50 transition">
-                <h3 className="text-2xl font-semibold mb-3">
-                  Intelligent code generation
-                </h3>
-                <p className="text-neutral-400 mb-8">
-                  Our AI doesn't just generate code - it understands best
-                  practices, proper architecture, and modern React patterns.
-                </p>
-                <div className="bg-black rounded-lg p-6 space-y-3">
-                  {[
-                    "Component-based architecture",
-                    "Proper state management",
-                    "Responsive design with Tailwind",
-                    "Clean, maintainable code",
-                  ].map((feature, i) => (
-                    <div
-                      key={i}
-                      className="text-neutral-600 text-sm flex items-start gap-3"
-                    >
-                      <FaCheckCircle
-                        size={16}
-                        className="mt-1 text-green-500"
-                      />
-                      <span>{feature}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Iterate Section */}
-              <div className="border border-neutral-800 rounded-2xl p-8 bg-neutral-900/30 hover:bg-neutral-900/50 transition">
-                <h3 className="text-2xl font-semibold mb-3">
-                  Iterate with conversation
-                </h3>
-                <p className="text-neutral-400 mb-8">
-                  Chat with the AI to refine your application. Add features, fix
-                  bugs, or change designs.
-                </p>
-                <div className="bg-black rounded-lg p-6 border border-neutral-700">
-                  <div className="space-y-4">
-                    <div className="text-neutral-500 text-sm">
-                      <p>"Add a dark mode toggle button"</p>
-                    </div>
-                    <div className="text-green-400 text-sm">
-                      <p>Updated theme system and added toggle</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Bottom Features */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="flex flex-col items-start">
-                <FaMagic size={24} className="mb-3 text-neutral-400" />
-                <h4 className="font-semibold mb-2">Production-ready code</h4>
-                <p className="text-neutral-500 text-sm">
-                  Generate code that follows industry best practices and
-                  standards.
-                </p>
-              </div>
-              <div className="flex flex-col items-start">
-                <FaRocket size={24} className="mb-3 text-neutral-400" />
-                <h4 className="font-semibold mb-2">Deploy instantly</h4>
-                <p className="text-neutral-500 text-sm">
-                  Download your project and deploy to any hosting platform in
-                  minutes.
-                </p>
-              </div>
-              <div className="flex flex-col items-start">
-                <MdBuild size={24} className="mb-3 text-neutral-400" />
-                <h4 className="font-semibold mb-2">Full control</h4>
-                <p className="text-neutral-500 text-sm">
-                  Own your code completely. Modify, extend, or customize as you
-                  wish.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Technology Stack Section */}
-        <section className="py-20 px-6 border-t border-neutral-800">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-5xl md:text-6xl font-bold mb-4 text-balance">
-                Modern stack.
-              </h2>
-              <p className="text-4xl md:text-5xl font-bold text-neutral-600 mb-6 text-balance">
-                Battle-tested tools.
-              </p>
-              <p className="text-xl text-neutral-400 text-balance">
-                Built with the most popular and reliable technologies in the
-                React ecosystem.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-8 mb-16">
-              {/* React & Vite */}
-              <div className="border border-neutral-800 rounded-2xl p-8 bg-neutral-900/30 hover:bg-neutral-900/50 transition">
-                <h3 className="text-2xl font-semibold mb-3">React + Vite</h3>
-                <p className="text-neutral-400 mb-8">
-                  Lightning-fast development with Vite's instant HMR and React's
-                  component-based architecture.
-                </p>
-                <div className="bg-black rounded-lg p-6 space-y-3">
-                  <div className="text-neutral-600 flex items-start gap-2">
-                    <FaReact size={16} className="mt-1 text-blue-400" />
-                    <span className="text-sm">Modern React with hooks</span>
-                  </div>
-                  <div className="text-xs text-neutral-700 px-2">
-                    Fast refresh, optimized builds
-                  </div>
-                  <div className="text-sm text-neutral-500">
-                    <p className="mb-2">Built for speed:</p>
-                                        <ul className="text-neutral-400 space-y-2">
-                      <li>• Instant server start</li>
-                      <li>• Hot module replacement</li>
-                      <li>• No npm install needed</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              {/* Tailwind CSS */}
-              <div className="border border-neutral-800 rounded-2xl p-8 bg-neutral-900/30 hover:bg-neutral-900/50 transition">
-                <h3 className="text-2xl font-semibold mb-3">
-                  Tailwind CSS & React Icons
-                </h3>
-                <p className="text-neutral-400 mb-8">
-                  Utility-first CSS framework with a comprehensive icon library
-                  for rapid UI development.
-                </p>
-                <div className="grid grid-cols-4 gap-3">
-                  {Array.from({ length: 12 }).map((_, i) => (
-                    <div
-                      key={i}
-                      className="bg-black rounded-lg p-3 flex items-center justify-center text-xs text-neutral-500 border border-neutral-800"
-                    >
-                      <FaReact size={14} className="text-blue-400" />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div className="border border-neutral-800 rounded-2xl p-8 bg-neutral-900/30">
-              <h3 className="text-2xl font-semibold mb-3">
-                AI-Powered Architecture
-              </h3>
-              <p className="text-neutral-400">
-                Our AI agent doesn't just generate code - it architects your
-                entire application with proper structure and best practices.
-              </p>
-              <div className="mt-6 text-neutral-500 text-sm p-4 bg-black rounded-lg border border-neutral-700">
-                <p>
-                  ✓ Component organization • State management • Routing setup
-                </p>
-                <p className="text-green-400 mt-2">
-                  Everything configured and ready to deploy
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Bottom Features Grid */}
-        <section className="py-16 px-6 border-t border-neutral-800">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="flex flex-col items-start">
-                <AiFillThunderbolt
-                  size={28}
-                  className="mb-4 text-neutral-400"
-                />
-                <h3 className="text-lg font-semibold mb-2">
-                  Blazing fast development
-                </h3>
-                <p className="text-neutral-500">
-                  Go from idea to deployed application in minutes, not days.
-                </p>
-              </div>
-              <div className="flex flex-col items-start">
-                <FaCode size={28} className="mb-4 text-neutral-400" />
-                <h3 className="text-lg font-semibold mb-2">
-                  Clean, readable code
-                </h3>
-                <p className="text-neutral-500">
-                  Generated code follows best practices and is easy to
-                  understand.
-                </p>
-              </div>
-              <div className="flex flex-col items-start">
-                <FaRocket size={28} className="mb-4 text-neutral-400" />
-                <h3 className="text-lg font-semibold mb-2">Deploy anywhere</h3>
-                <p className="text-neutral-500">
-                  Export your project and deploy to Vercel, Netlify, or any
-                  platform.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="py-24 px-6 border-t border-neutral-800">
-          <div className="max-w-2xl mx-auto text-center">
-            <div className="w-16 h-16 mx-auto mb-8 rounded-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-blue-500/30 flex items-center justify-center">
-              <IoSparkles size={32} className="text-blue-400" />
-            </div>
-            <h2 className="text-5xl md:text-6xl font-bold mb-8 text-balance">
-              Start building with AI today.
-            </h2>
-            <Link href="/chat">
-              <button className="px-8 py-4 border border-neutral-700 rounded-full hover:bg-neutral-900 transition font-semibold">
-                START BUILDING FOR FREE
-              </button>
-            </Link>
           </div>
         </section>
 
         {/* Footer */}
-        <footer className="border-t border-neutral-800 py-12 px-6">
-          <div className="max-w-6xl mx-auto">
-            <div className="flex flex-col md:flex-row items-center justify-between mb-8 pb-8 border-b border-neutral-800">
-              <div className="flex items-center gap-2 mb-6 md:mb-0">
-                <IoSparkles size={20} className="text-blue-400" />
-                <span className="font-semibold">WEB BUILDER AI</span>
-                <span className="text-xs px-2 py-1 rounded-full border border-neutral-700 text-neutral-500">
-                  BETA
-                </span>
-              </div>
-              <nav className="flex items-center gap-8 text-neutral-400 text-sm">
-                <Link href="/" className="hover:text-white transition">
-                  Home
-                </Link>
-                <Link href="/chat" className="hover:text-white transition">
-                  Features
-                </Link>
-                <a href="#contact" className="hover:text-white transition">
-                  Contact
-                </a>
-                <a href="#privacy" className="hover:text-white transition">
-                  Privacy Policy
-                </a>
-                <a
-                  href="https://github.com/abhayymishraa/lovable-clone"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-white transition"
-                >
-                  GitHub
-                </a>
-              </nav>
+        <footer className="border-t border-white/5 py-12 px-6 bg-black">
+          <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between">
+            <div className="flex items-center gap-2 mb-6 md:mb-0">
+              <span className="text-2xl font-serif text-white font-bold" style={{ fontFamily: 'var(--font-playfair)' }}>Evi.</span>
+              <span className="text-xs px-2 py-1 rounded-full border border-white/10 text-neutral-500">
+                BETA
+              </span>
             </div>
+            <nav className="flex items-center gap-8 text-neutral-500 text-sm">
+              <Link href="/" className="hover:text-[#FF4D00] transition">
+                Home
+              </Link>
+              <Link href="/chat" className="hover:text-[#FF4D00] transition">
+                Builder
+              </Link>
+              <a href="#" className="hover:text-[#FF4D00] transition">
+                Docs
+              </a>
+              <a href="#" className="hover:text-[#FF4D00] transition">
+                Twitter
+              </a>
+            </nav>
           </div>
         </footer>
       </main>

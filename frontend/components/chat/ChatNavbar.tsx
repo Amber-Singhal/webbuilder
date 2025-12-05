@@ -17,7 +17,9 @@ export function ChatNavbar({
   return (
     <nav className="relative z-20 border-b border-white/5 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        <div className="text-white font-semibold text-lg">WEB BUILDER</div>
+        <div className="flex items-center gap-2">
+          <span className="text-xl font-serif text-white font-bold" style={{ fontFamily: 'var(--font-playfair)' }}>Evi.</span>
+        </div>
         <div className="flex items-center gap-8">
           <div className="hidden md:flex gap-8 text-sm text-slate-400">
             <a href="#" className="hover:text-white transition">
